@@ -1,11 +1,15 @@
 import Graphs from './components/Graphs';
 import Maps from './components/Maps';
-import { Box,InputLabel,MenuItem, Select } from '@mui/material';
+import { Box,Button,InputLabel,MenuItem, Select, Typography } from '@mui/material';
 import './App.css';
 import useStore from './StoreManager';
 
 
 function App() {
+  const osmChanged=useStore((state) => state.changeOsm)
+  const isOsm=useStore((state) => state.isOsm)
+  const layerChanged=useStore((state) => state.layerChanged)
+  const isAdded=useStore((state) => state.isAdded)
   const statesInIndia = [
     "Andhra Pradesh",
     "Arunachal Pradesh",
@@ -34,7 +38,8 @@ function App() {
     "Tripura",
     "Uttar Pradesh",
     "Uttarakhand",
-    "West Bengal"
+    "West Bengal",
+    "india"
   ];
   const handleChange = useStore((state) => state.changeState)
   const stat = useStore((state) => state.states)
@@ -46,20 +51,29 @@ function App() {
       <Box className="bg-container">
         <header>
           <center>
-          <InputLabel id="selector">Select State</InputLabel>
-  
-  <Select
-    labelId="selector"
-    id="states"
-    label="select state"
-    value={stat}
-    onChange={handler}
-    className='selector'
-  >{statesInIndia.map((each)=>
-    <MenuItem value={each} id={each} key={each}>{each}</MenuItem>
-  )}
-    
-  </Select>
+          <div className='rowContainer'>
+            <div>
+            <InputLabel id="selector">Select State</InputLabel>  
+          <Select
+            labelId="selector"
+            id="states"
+            label="select state"
+            value={stat}
+            onChange={handler}
+            placeholder='select state'
+            className='selector'
+          >{statesInIndia.map((each)=>
+            <MenuItem value={each} id={each} key={each}>{each}</MenuItem>
+          )}
+          
+          </Select>
+
+            </div>
+          <Button type='button' variant='contained' className='changeButton' onClick={()=>osmChanged()}><Typography variant='p'>{isOsm?'Switch to OSM':'Switch to XYZ'}</Typography></Button>
+          <Button type='button' variant='contained' className='addButton'  onClick={()=>layerChanged()}><Typography variant='p'>{isAdded?'remove':'add'}</Typography></Button>
+
+          </div>
+
           </center>
         </header>
         <div className='rowContainer'>

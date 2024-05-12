@@ -4,13 +4,22 @@ import Map from 'ol/Map';
 import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
+import XYZ from 'ol/source/XYZ';
 import { fromLonLat } from 'ol/proj';
 import useStore from '../../StoreManager';
+// import VectorLayer from 'ol/layer/Vector';
+// import VectorSource from 'ol/source/Vector';
+// import GeoJSON from 'ol/format/GeoJSON';
+
 
 const Maps = () => {
 
   const mapRef = useRef(null);
   const stat=useStore(state=>state.states)
+  const isAdded=useStore(state=>state.isAdded)
+  console.log(stat)
+  const isOsm=useStore(state=>state.isOsm)
+  
   useEffect(() => {
     
     const statesCoordinates = {
@@ -45,24 +54,29 @@ const Maps = () => {
     };
       
     const indiaCoordinates =fromLonLat([78.9629, 20.5937]);
-    
+    const layers=[
+      new TileLayer({
+        source: new XYZ({
+          url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+        }) 
+      }),
+      new TileLayer({
+        source: new OSM() 
+      })
+    ]
     const map = new Map({
       target: mapRef.current, 
-      layers: [
-        new TileLayer({
-          source: new OSM() 
-        })
-      ],
+      layers: [isOsm?layers[0]:layers[1]],
       view: new View({
-        center: (stat!=='')?statesCoordinates[stat]:indiaCoordinates, 
-        zoom: (stat!=='')?7.5:4.5
+        center: (stat!=='india')?statesCoordinates[stat]:indiaCoordinates, 
+        zoom: (stat!=='india')?7.5:4.5
       })
     });
 
     return () => {
       map.setTarget(null);
     };
-  }, [stat]); 
+  }, [stat,isOsm,isAdded]); 
 
   return <div ref={mapRef} className="map-container subContainer" />;
 };

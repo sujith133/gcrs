@@ -5,9 +5,9 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Paper } from "@mui/material";
 import { Line,Doughnut  } from 'react-chartjs-2';
-import { Chart, LineElement, BarElement, LinearScale, CategoryScale, DoughnutController, PointElement, ArcElement } from 'chart.js';
+import { Chart, LineElement, LinearScale, CategoryScale, DoughnutController, PointElement, ArcElement,Tooltip, Legend } from 'chart.js';
 
-Chart.register(PointElement, ArcElement,LineElement,DoughnutController, BarElement, LinearScale, CategoryScale);
+Chart.register(PointElement, ArcElement,LineElement,DoughnutController, LinearScale, CategoryScale,Tooltip, Legend);
 
 const Graphs = () => {
     const stat=useStore(state=>state.states)
@@ -40,7 +40,7 @@ const Graphs = () => {
       'Uttar Pradesh': [40, 60],
       'Uttarakhand': [20, 80],
       'West Bengal': [50, 50],
-      '':[30,70]
+      'india':[30,70]
     };
     const statePopulation = {
         "Andhra Pradesh": [53903393, 54531349, 55149125, 55748738, 56330087],
@@ -71,7 +71,7 @@ const Graphs = () => {
         "Uttar Pradesh": [237882725, 240928803, 243963948, 246944819, 249902686],
         "Uttarakhand": [11141089, 11208201, 11274213, 11334122, 11387406],
         "West Bengal": [101702624, 102741698, 103818340, 104829582, 105849303],
-        "": [102741698,103818340,104829582,105849303,106949405]
+        "india": [102741698,103818340,104829582,105849303,106949405]
       };
   const data = {
     labels: [2020,2021,2022,2023,2024],
@@ -118,13 +118,13 @@ const Graphs = () => {
   };
   return (
     <div className="subContainer">
-      <Slider className='' {...settings}>
+      <Slider {...settings}>
         <Paper elevation={0} className='chartBox'>
-        <h3 className='marginAuto'>{stat !== '' ? `${stat} states population from 2020-2024 Line Representation` : 'India population from 2020-2024 Line Representation'}</h3>
+        <h3 className='marginAuto'>{stat !== 'india' ? `${stat} states population from 2020-2024 Line Representation` : 'India population from 2020-2024 Line Representation'}</h3>
           <Line className='chartLineCard marginAuto' data={data} />
         </Paper>
         <Paper elevation={0} className='chartBox'>
-        <h3 className='marginAuto'>{stat !== '' ? `${stat} states region distribution from 2020-2024 Doughnut Representation` : 'India region distribution from 2020-2024 Doughnut Representation'}</h3>
+        <h3 className='marginAuto'>{stat !== 'india' ? `${stat} states region distribution from 2020-2024 Doughnut Representation` : 'India region distribution from 2020-2024 Doughnut Representation'}</h3>
           <Doughnut className='chartCard' data={ratioData} options={ratioData.options} />
         </Paper>
       </Slider>

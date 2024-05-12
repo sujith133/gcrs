@@ -8,9 +8,30 @@
   background-image: linear-gradient(0deg, #FFDEE9 0%, #FFFF00 50%, #B5FFFC 100%);
   overflow-y: auto;
 }
+.addButton{
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+  height: 35px !important;
+  max-width: 180px !important;
+  border-radius: 50px !important;
+  
+}
+.changeButton{
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+  height: 35px !important;
+  max-width: 180px !important;
+  
+}
 .subContainer{
   height: 80vh;
   width: 50%;
+  scale: 0.9;
+  text-align: center;
+}
+.subContainers{
+  height: 80vh;
+  width: 100%;
   scale: 0.9;
   text-align: center;
 }
@@ -57,7 +78,25 @@
     flex-wrap: wrap;
     justify-content: space-around;
   } 
-
+  .addButton{
+    margin-top: 15px !important;
+    margin-bottom: auto !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    height: 35px !important;
+    max-width: 180px !important;
+    border-radius: 50px !important;
+    
+  }
+  .changeButton{
+    margin-top: 15px !important;
+    margin-bottom: auto !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    height: 35px !important;
+    max-width: 180px !important;
+    
+  }
   .subContainer {
     height: 80vh;
     width: 100%;
@@ -72,12 +111,32 @@
     flex-wrap: wrap;
     justify-content: space-around;
   } 
+  .addButton{
+    margin-top: 15px !important;
+    margin-bottom: auto !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    height: 35px !important;
+    max-width: 180px !important;
+    border-radius: 50px !important;
+    
+  }
+  .changeButton{
+    margin-top: 15px !important;
+    margin-bottom: auto !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    height: 35px !important;
+    max-width: 180px !important;
+    
+  }
   .subContainer{
     height: 60vh;
     width: 100%;
     scale: 0.9;
     text-align: center;
   }
+
   .chartBox{
     min-height: 60vh;
     max-height: 60vh;
