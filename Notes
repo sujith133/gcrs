@@ -1,1 +1,15 @@
+Layout Design: Initially, I strategized the UI layout, carefully planning the placement of components to ensure a cohesive design.
 
+Package Exploration: I delved into various packages such as OpenLayers, Chart.js, and Material-UI to understand their functionalities and how they could enhance both the design and functionality of the project.
+
+State Management: To streamline data management and avoid prop drilling, I utilized Zustand to create a global state manager, allowing for efficient storage and access of variables throughout the application.
+
+Graph Visualization: I crafted the Graphs component to visually represent data using line and doughnut charts from Chart.js. Using mock data, like India's population statistics and rural-urban divisions, I aimed to make the visualization interactive and informative.
+
+Carousel Effect: Implementing React Slick, I added a carousel effect to the chart component, enhancing its visual appeal and user experience.
+
+Map Component Design: The Map component was designed to display both OpenStreetMap (OSM) and XYZ map (terrestrial map of India) layers as base layers. Utilizing a variable to toggle between the map states, users could observe dynamic effects like panning and zooming on the map.
+
+Vector Data Integration: Although attempted to incorporate vector data into the map, I encountered challenges in finding open-source vector maps of Indian states with GeoJSON API URLs. As a result, I was unable to display the vector layer on the screen.
+
+These steps highlight the process and tools used in developing the project, encompassing layout design, package exploration, state management, data visualization, and map integration, while also acknowledging the encountered obstacles in incorporating vector data.
